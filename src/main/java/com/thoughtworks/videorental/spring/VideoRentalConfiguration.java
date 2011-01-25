@@ -71,9 +71,9 @@ public class VideoRentalConfiguration {
 
 	@Bean(scope = "singleton")
 	public CustomerRepository customerRepository() {
-		final Customer customer1 = new Customer("James Madison");
-		final Customer customer2 = new Customer("Zackery Taylor");
-		final Customer customer3 = new Customer("Benjamin Harrison");
+		final Customer customer1 = new Customer("James Madison", "jmadison", "jm-password");
+		final Customer customer2 = new Customer("Zackery Taylor", "ztaylor", "zt-password");
+		final Customer customer3 = new Customer("Benjamin Harrison", "bharrison", "bh-password");
 		return new SetBasedCustomerRepository(Arrays.asList(customer1, customer2, customer3));
 	}
 

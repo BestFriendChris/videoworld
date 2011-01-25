@@ -17,7 +17,7 @@ public class ViewAdminActionTest {
 	@Test
 	public void shouldShowAllUsers() {
 		Set<Customer> users = new LinkedHashSet<Customer>();
-		users.add(new Customer("John Doe"));
+		users.add(new Customer("John Doe", "jdoe", "password"));
 		
 		SetBasedCustomerRepository customerRepository = new SetBasedCustomerRepository(users);
 		

@@ -9,7 +9,7 @@ public class CustomersOrderedByNameComparator implements OrderComparator<Custome
 
 	@Override
 	public int compare(final Customer customer1, final Customer customer2) {
-		return (customer1 == customer2) ? 0 : customer1.getName().compareTo(customer2.getName());
+		return (customer1 == customer2) ? 0 : customer1.getUsername().compareTo(customer2.getUsername());
 	}
 
 	@Override

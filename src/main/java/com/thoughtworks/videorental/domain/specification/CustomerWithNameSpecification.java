@@ -15,7 +15,7 @@ public class CustomerWithNameSpecification implements Specification<Customer> {
 
 	@Override
 	public boolean isSatisfiedBy(final Customer customer) {
-		return customer.getName().equals(customerName);
+		return customer.getDisplayName().equals(customerName);
 	}
 
 	@Override

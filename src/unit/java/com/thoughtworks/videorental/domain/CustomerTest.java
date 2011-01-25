@@ -1,6 +1,8 @@
 package com.thoughtworks.videorental.domain;
 
 import static junit.framework.Assert.*;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -27,7 +29,7 @@ public class CustomerTest {
 
 	@Before
 	public void setUp() {
-		customer = new Customer("John Smith");
+		customer = new Customer("John Smith", "jsmith", "password");
 
 		final Movie montyPython = new Movie("Monty Python and the Holy Grail", Movie.REGULAR);
 		final Movie ran = new Movie("Ran", Movie.REGULAR);
@@ -65,5 +67,11 @@ public class CustomerTest {
 			+ "You have a new total of 6 frequent renter points";
 		assertEquals(expected, customer.statement(mixedRentals));
 	}
+
+    @Test
+    public void testPasswordValidated() throws Exception {
+        assertThat(customer.isPasswordValid("incorrect"), is(false));
+        assertThat(customer.isPasswordValid("password"), is(true));
+    }
 
 }

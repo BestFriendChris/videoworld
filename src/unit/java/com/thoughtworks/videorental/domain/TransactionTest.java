@@ -17,8 +17,8 @@ public class TransactionTest {
 	private static final Movie FINDING_NEMO = new Movie("Finding Nemo", Movie.CHILDRENS);
 	private static final Movie SHAWSHANK_REDEMPTION = new Movie("Shawshank Redemption", Movie.REGULAR);
 
-	private static final Customer CUSTOMER_ONE = new Customer("James Cameron");
-	private static final Customer CUSTOMER_TWO = new Customer("Quentin Tarantino");
+	private static final Customer CUSTOMER_ONE = new Customer("James Cameron", "jcameron", "password1");
+	private static final Customer CUSTOMER_TWO = new Customer("Quentin Tarantino", "qtarantino", "password2");
 	
 	private static final Rental RENTAL_ONE = new Rental(CUSTOMER_ONE, FINDING_NEMO, Period.of(LocalDate.today(),
 			Duration.ofDays(1)));

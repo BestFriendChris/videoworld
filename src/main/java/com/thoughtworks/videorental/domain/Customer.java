@@ -3,19 +3,29 @@ package com.thoughtworks.videorental.domain;
 import java.util.Set;
 
 public class Customer {
-	private String name;
+	private final String displayName;
+
+    private final String username;
+    private final String password;
+
 	private int frequentRenterPoints = 0;
 
-	public Customer(String name) {
-		this.name = name;
+    public Customer(String displayName, String username, String password) {
+        this.displayName = displayName;
+        this.username = username;
+        this.password = password;
+    }
+
+    public String getDisplayName() {
+		return displayName;
 	}
 
-	public String getName() {
-		return name;
-	}
+    public String getUsername() {
+        return username;
+    }
 
-	public String statement(final Set<Rental> newRentals) {
-		String result = "Rental Record for " + getName() + "\n";
+    public String statement(final Set<Rental> newRentals) {
+		String result = "Rental Record for " + getDisplayName() + "\n";
 
 		double totalAmount = 0;
 		for (Rental rental : newRentals) {
@@ -36,4 +46,7 @@ public class Customer {
 		return result;
 	}
 
+    public boolean isPasswordValid(String guessedPassword) {
+        return this.password.equals(guessedPassword);
+    }
 }
