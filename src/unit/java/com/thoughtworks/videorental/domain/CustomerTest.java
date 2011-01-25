@@ -70,8 +70,9 @@ public class CustomerTest {
 
     @Test
     public void testPasswordValidated() throws Exception {
-        assertThat(customer.isPasswordValid("incorrect"), is(false));
-        assertThat(customer.isPasswordValid("password"), is(true));
+        assertThat(customer.isUsernameAndPasswordValid("jsmith", "incorrect"), is(false));
+        assertThat(customer.isUsernameAndPasswordValid("incorrect", "password"), is(false));
+        assertThat(customer.isUsernameAndPasswordValid("jsmith", "password"), is(true));
     }
 
 }

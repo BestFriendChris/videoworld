@@ -46,7 +46,7 @@ public class Customer {
 		return result;
 	}
 
-    public boolean isPasswordValid(String guessedPassword) {
-        return this.password.equals(guessedPassword);
+    public boolean isUsernameAndPasswordValid(String username, String password) {
+        return this.username.equals(username) && this.password.equals(password);
     }
 }
