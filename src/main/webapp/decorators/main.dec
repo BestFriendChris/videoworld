@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>${title}</title>
-    <link rel="stylesheet" href="styles/main.css" type="text/css"></link>
+    <link rel="stylesheet" href="/styles/main.css" type="text/css"></link>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
 	<script type="text/javascript">
 	  	google.load("jquery", "1.4");

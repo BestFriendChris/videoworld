@@ -2,16 +2,10 @@ package com.thoughtworks.videorental.spring;
 
 import java.util.Arrays;
 
+import com.thoughtworks.videorental.action.*;
 import org.springframework.config.java.annotation.Bean;
 import org.springframework.config.java.annotation.Configuration;
 
-import com.thoughtworks.videorental.action.LoginAction;
-import com.thoughtworks.videorental.action.LogoutAction;
-import com.thoughtworks.videorental.action.RentMoviesAction;
-import com.thoughtworks.videorental.action.ViewHistoryAction;
-import com.thoughtworks.videorental.action.ViewAdminAction;
-import com.thoughtworks.videorental.action.ViewHomeAction;
-import com.thoughtworks.videorental.action.ViewCurrentRentalsAction;
 import com.thoughtworks.videorental.domain.Customer;
 import com.thoughtworks.videorental.domain.Movie;
 import com.thoughtworks.videorental.domain.repository.CustomerRepository;
@@ -56,6 +50,11 @@ public class VideoRentalConfiguration {
 		return new ViewAdminAction(customerRepository());
 	}
 	
+	@Bean(scope = "prototype")
+	public AddCustomerAction addCustomerAction() {
+		return new AddCustomerAction(customerRepository());
+	}
+
 	@Bean(scope = "prototype")
 	public ViewCurrentRentalsAction viewCurrentRentalsAction() {
 		return new ViewCurrentRentalsAction(rentalRepository());

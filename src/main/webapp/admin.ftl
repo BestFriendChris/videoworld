@@ -9,5 +9,7 @@
 	<li>${user.displayName} (${user.username})</li>
 	</#list>
 	</ul>
+
+    <a href="/admin/addcustomer">Add new customer</a>
 </body>
 </html>

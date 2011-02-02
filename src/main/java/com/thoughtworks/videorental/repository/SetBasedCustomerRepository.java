@@ -9,6 +9,7 @@ import com.thoughtworks.ddd.specification.OrderComparator;
 import com.thoughtworks.ddd.specification.Specification;
 import com.thoughtworks.videorental.domain.Customer;
 import com.thoughtworks.videorental.domain.repository.CustomerRepository;
+import com.thoughtworks.videorental.domain.specification.CustomerWithUsernameSpecification;
 
 public class SetBasedCustomerRepository extends SetBasedRepository<Customer> implements CustomerRepository {
 
@@ -25,5 +26,10 @@ public class SetBasedCustomerRepository extends SetBasedRepository<Customer> imp
 	public Set<Customer> selectSatisfying(Specification<Customer> specification, OrderComparator<Customer> comparator) {
 		return selectSatisfying(specification, (Comparator<Customer>) comparator);
 	}
+
+    @Override
+    public boolean containsUsername(String username) {
+        return !selectSatisfying(new CustomerWithUsernameSpecification(username)).isEmpty();
+    }
 
 }

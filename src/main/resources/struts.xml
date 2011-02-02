@@ -49,5 +49,11 @@
 		<action name="admin" class="viewAdminAction">
 			<result type="freemarker">admin.ftl</result>
 		</action>
+
+		<action name="admin/addcustomer" class="addCustomerAction">
+            <result name="input" type="freemarker">addcustomer.ftl</result>
+			<result name="error" type="freemarker">addcustomer.ftl</result>
+			<result name="success" type="redirect">/admin</result>
+		</action>
 	</package>
 </struts>

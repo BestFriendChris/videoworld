@@ -23,4 +23,6 @@ public interface CustomerRepository {
 	Set<Customer> selectSatisfying(Specification<Customer> specification, OrderComparator<Customer> comparator);
 
 	Customer selectUnique(Specification<Customer> specification) throws NonUniqueObjectSelectedException;
+
+    boolean containsUsername(String username);
 }
