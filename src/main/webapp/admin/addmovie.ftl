@@ -10,6 +10,12 @@
 	<form id="addmovie">
         <input type="hidden" name="adding" value="true" />
         <p><span>Movie title:</span> <input type="text" name="title" value="${title}"/></p>
+        <#if detailedMoviesFeatureEnabled??>
+            <p><span>Director:</span> <input type="text" name="director" value="${director}"/></p>
+            <p><span>Actor:</span> <input type="text" name="actor" value="${actor}"/></p>
+            <p><span>Actress:</span> <input type="text" name="actress" value="${actress}"/></p>
+            <p><span>Category:</span> <input type="text" name="category" value="${category}"/></p>
+        </#if>
     	<input type="submit" value="Create" />
 	</form>
 </body>

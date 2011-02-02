@@ -3,6 +3,9 @@ package com.thoughtworks.videorental.spring;
 import java.util.Arrays;
 
 import com.thoughtworks.videorental.action.*;
+import com.thoughtworks.videorental.domain.DetailedMovie;
+import com.thoughtworks.videorental.domain.Price;
+import com.thoughtworks.videorental.util.Feature;
 import org.springframework.config.java.annotation.Bean;
 import org.springframework.config.java.annotation.Configuration;
 
@@ -57,7 +60,11 @@ public class VideoRentalConfiguration {
 
 	@Bean(scope = "prototype")
 	public AddMovieAction addMovieAction() {
-		return new AddMovieAction(movieRepository());
+        if (Feature.DetailedMovies.isEnabled()) {
+            return new AddDetailedMovieAction(movieRepository());
+        } else {
+            return new AddMovieAction(movieRepository());
+        }
 	}
 
 	@Bean(scope = "prototype")
@@ -67,11 +74,33 @@ public class VideoRentalConfiguration {
 
 	@Bean(scope = "singleton")
 	public MovieRepository movieRepository() {
-		final Movie avatar = new Movie("Avatar", Movie.NEW_RELEASE);
-		final Movie upInTheAir = new Movie("Up In The Air", Movie.REGULAR);
-		final Movie findingNemo = new Movie("Finding Nemo", Movie.CHILDRENS);
-		return new SetBasedMovieRepository(Arrays.asList(avatar, upInTheAir, findingNemo));
+        SetBasedMovieRepository movieRepository = new SetBasedMovieRepository();
+
+        Movie avatar = movie("Avatar", Movie.NEW_RELEASE, "James Cameron", "Sam Worthington", "Zoe Saldana", "Action");
+        movieRepository.add(avatar);
+
+        Movie upInTheAir = movie("Up In The Air", Movie.REGULAR, "Jason Reitman", "George Clooney", "Vera Farmiga", "Drama");
+        movieRepository.add(upInTheAir);
+
+        Movie findingNemo = movie("Finding Nemo", Movie.CHILDRENS, "Andrew Stanton", "Albert Brooks", "Ellen DeGeneres", "Animation");
+        movieRepository.add(findingNemo);
+
+        return movieRepository;
 	}
+
+    private Movie movie(String title, Price price, String director, String actor, String actress, String action) {
+        if (Feature.DetailedMovies.isEnabled()) {
+            DetailedMovie movie = new DetailedMovie(title, price);
+            movie.setDirector(director);
+            movie.setActor(actor);
+            movie.setActress(actress);
+            movie.setCategory(action);
+            return movie;
+        } else {
+            return new Movie(title, price);
+        }
+
+    }
 
 	@Bean(scope = "singleton")
 	public CustomerRepository customerRepository() {

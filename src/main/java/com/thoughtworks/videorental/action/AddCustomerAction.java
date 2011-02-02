@@ -3,6 +3,7 @@ package com.thoughtworks.videorental.action;
 import com.opensymphony.xwork2.ActionSupport;
 import com.thoughtworks.videorental.domain.Customer;
 import com.thoughtworks.videorental.domain.repository.CustomerRepository;
+import com.thoughtworks.videorental.util.ParamsUtil;
 
 public class AddCustomerAction extends ActionSupport {
 
@@ -52,18 +53,11 @@ public class AddCustomerAction extends ActionSupport {
         return flashError;
     }
 
-    private boolean nullOrEmpty(String... params) {
-        for (String param : params) {
-            if (param == null || param.isEmpty()) { return true; }
-        }
-        return false;
-    }
-
 	@Override
 	public String execute() throws Exception {
         if (adding == null) { return INPUT; }
 
-        if (nullOrEmpty(displayname, username, password1, password2)) {
+        if (ParamsUtil.nullOrEmpty(displayname, username, password1, password2)) {
             flashError = "Must enter all fields";
 			return ERROR;
 		}
