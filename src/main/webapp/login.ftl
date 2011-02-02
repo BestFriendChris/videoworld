@@ -4,6 +4,9 @@
 </head>
 <body>
     <h1>Login</h1>
+    <#if flashError != "" >
+        <p id="flash-error">${flashError}</p>
+    </#if>
 	<form id="login">
         <p><span>Username:</span> <input type="text" name="username" /></p>
         <p><span>Password:</span> <input type ="password" name="password" /></p>

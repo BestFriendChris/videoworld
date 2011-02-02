@@ -16,6 +16,7 @@ public class LoginAction extends ActionSupport {
     private String password;
 
 	private Customer loggedInCustomer;
+    private String flashError = "";
 
 	public LoginAction(final CustomerRepository customerRepository) {
 		this.customerRepository = customerRepository;
@@ -37,7 +38,11 @@ public class LoginAction extends ActionSupport {
 		return loggedInCustomer;
 	}
 
-	@Override
+    public String getFlashError() {
+        return flashError;
+    }
+
+    @Override
 	public String execute() throws Exception {
 		if (username == null) {
 			return LOGIN;
@@ -45,6 +50,7 @@ public class LoginAction extends ActionSupport {
 
 		loggedInCustomer = customerRepository.selectUnique(new CustomerWithUsernameAndPasswordSpecification(username, password));
 		if (loggedInCustomer == null) {
+            flashError = "Invalid username/password";
 			return LOGIN;
 		}
 
