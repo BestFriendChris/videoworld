@@ -35,4 +35,9 @@ public class SetBasedMovieRepository extends SetBasedRepository<Movie> implement
 	public Set<Movie> withTitles(final String... titles) {
 		return selectSatisfying(new MovieWithTitleSpecification(titles));
 	}
+
+    @Override
+    public boolean containsMovie(String title) {
+        return !withTitles(title).isEmpty();
+    }
 }

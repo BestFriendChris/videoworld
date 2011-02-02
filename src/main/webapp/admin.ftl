@@ -10,6 +10,10 @@
 	</#list>
 	</ul>
 
-    <a href="/admin/addcustomer">Add new customer</a>
+    <h1>Actions</h1>
+    <ul>
+        <li><a href="/admin/addcustomer">Add new customer</a></li>
+        <li><a href="/admin/addmovie">Add new movie</a></li>
+    </ul>
 </body>
 </html>

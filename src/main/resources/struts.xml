@@ -55,5 +55,11 @@
 			<result name="error" type="freemarker">addcustomer.ftl</result>
 			<result name="success" type="redirect">/admin</result>
 		</action>
+
+		<action name="admin/addmovie" class="addMovieAction">
+            <result name="input" type="freemarker">addmovie.ftl</result>
+			<result name="error" type="freemarker">addmovie.ftl</result>
+			<result name="success" type="redirect">/admin</result>
+		</action>
 	</package>
 </struts>

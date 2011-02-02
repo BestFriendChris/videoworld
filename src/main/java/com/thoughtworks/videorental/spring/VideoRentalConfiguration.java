@@ -56,6 +56,11 @@ public class VideoRentalConfiguration {
 	}
 
 	@Bean(scope = "prototype")
+	public AddMovieAction addMovieAction() {
+		return new AddMovieAction(movieRepository());
+	}
+
+	@Bean(scope = "prototype")
 	public ViewCurrentRentalsAction viewCurrentRentalsAction() {
 		return new ViewCurrentRentalsAction(rentalRepository());
 	}
