@@ -13,4 +13,9 @@ public class ChildrensPrice implements Price {
 		return 1;
 	}
 
+    @Override
+    public String getDisplayName() {
+        return "Children's";
+    }
+
 }

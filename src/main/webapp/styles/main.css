@@ -29,3 +29,17 @@ body {
     border-style:solid;
     border-color:#ff0000
 }
+
+table.movie-list {
+    border-collapse:collapse;
+    width: 100%;
+}
+
+table.movie-list tr td {
+    border: 1px solid black;
+}
+
+table.movie-list tr td.choose {
+    width: 1.5em;
+    text-align: center;
+}

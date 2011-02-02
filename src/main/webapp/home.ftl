@@ -42,12 +42,21 @@
 		</ul>
 		<div class="wiz-body">
 			<div id="wizard-1">
-				<div class="wiz-content movielist">					
-			    	<#list movies as movie>
-			    		<div class="movie">
-			    			<p><input type="checkbox" name="movieNames" value="${movie.title}"/> ${movie.title}</p>
-			    		</div>
-			    	</#list>
+				<div class="wiz-content movielist">
+                    <table class="movie-list">
+                        <tr>
+                            <th></th>
+                            <th>Title</th>
+                            <th>Price Code</th>
+                        </tr>
+                        <#list movies as movie>
+                            <tr class="movie">
+                                <td class="choose"><input type="checkbox" name="movieNames" value="${movie.title}"/></td>
+                                <td>${movie.title}</td>
+                                <td>${movie.price.displayName}</td>
+                            </tr>
+                        </#list>
+                    </table>
 				</div>
 				<div class="wiz-nav">
 					<input class="back btn" type="button" value="< Prev" />
