@@ -17,6 +17,9 @@
 		<a href="rentals" class="tab">Current Rentals</a>
 		<a href="history" class="tab">History</a>
 		<a href="/" class="tab">Rent Movies</a>
+        <#if (Session["user"].admin)!false >
+            <a href="/admin" class="tab">Admin</a>
+        </#if>
 	</div>
 	${body}
 	<div id="footer">
