@@ -9,9 +9,14 @@
 	<package name="videorental" extends="struts-default">
         <interceptors>
             <interceptor name="login" class="customerLoginInterceptor" />
+            <interceptor name="adminRequired" class="adminRoleInterceptor" />
             <interceptor-stack name="defaultLoginStack">
 	            <interceptor-ref name="login"/>
 	            <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+            <interceptor-stack name="adminStack">
+                <interceptor-ref name="defaultLoginStack" />
+                <interceptor-ref name="adminRequired" />
             </interceptor-stack>
         </interceptors>
         
@@ -47,16 +52,19 @@
 		</action>
 
 		<action name="admin" class="viewAdminAction">
+            <interceptor-ref name="adminStack" />
 			<result type="freemarker">admin.ftl</result>
 		</action>
 
 		<action name="admin/addcustomer" class="addCustomerAction">
+            <interceptor-ref name="adminStack" />
             <result name="input" type="freemarker">addcustomer.ftl</result>
 			<result name="error" type="freemarker">addcustomer.ftl</result>
 			<result name="success" type="redirect">/admin</result>
 		</action>
 
 		<action name="admin/addmovie" class="addMovieAction">
+            <interceptor-ref name="adminStack" />
             <result name="input" type="freemarker">addmovie.ftl</result>
 			<result name="error" type="freemarker">addmovie.ftl</result>
 			<result name="success" type="redirect">/admin</result>

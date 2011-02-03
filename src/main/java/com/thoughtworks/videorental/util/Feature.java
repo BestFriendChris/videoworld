@@ -1,7 +1,8 @@
 package com.thoughtworks.videorental.util;
 
 public enum Feature {
-    DetailedMovies(2);
+    DetailedMovies(2),
+    AdminAccount(2);
 
     private final int minIteration;
 

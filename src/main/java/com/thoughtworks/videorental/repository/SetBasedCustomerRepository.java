@@ -13,7 +13,10 @@ import com.thoughtworks.videorental.domain.specification.CustomerWithUsernameSpe
 
 public class SetBasedCustomerRepository extends SetBasedRepository<Customer> implements CustomerRepository {
 
-	public SetBasedCustomerRepository(final Collection<Customer> entities) {
+    public SetBasedCustomerRepository() {
+    }
+
+    public SetBasedCustomerRepository(final Collection<Customer> entities) {
 		super(entities);
 	}
 

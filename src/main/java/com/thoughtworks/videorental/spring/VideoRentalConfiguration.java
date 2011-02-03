@@ -5,6 +5,7 @@ import java.util.Arrays;
 import com.thoughtworks.videorental.action.*;
 import com.thoughtworks.videorental.domain.DetailedMovie;
 import com.thoughtworks.videorental.domain.Price;
+import com.thoughtworks.videorental.interceptor.AdminRoleInterceptor;
 import com.thoughtworks.videorental.util.Feature;
 import org.springframework.config.java.annotation.Bean;
 import org.springframework.config.java.annotation.Configuration;
@@ -104,10 +105,17 @@ public class VideoRentalConfiguration {
 
 	@Bean(scope = "singleton")
 	public CustomerRepository customerRepository() {
-		final Customer customer1 = new Customer("James Madison", "jmadison", "jm-password");
-		final Customer customer2 = new Customer("Zackery Taylor", "ztaylor", "zt-password");
-		final Customer customer3 = new Customer("Benjamin Harrison", "bharrison", "bh-password");
-		return new SetBasedCustomerRepository(Arrays.asList(customer1, customer2, customer3));
+        SetBasedCustomerRepository customerRepository = new SetBasedCustomerRepository();
+
+        if (Feature.AdminAccount.isEnabled()) {
+            Customer admin = Customer.createAdminUser("Admin", "admin", "pw");
+            customerRepository.add(admin);
+        }
+
+        customerRepository.add(new Customer("James Madison", "jmadison", "jm-password"));
+        customerRepository.add(new Customer("Zackery Taylor", "ztaylor", "zt-password"));
+        customerRepository.add(new Customer("Benjamin Harrison", "bharrison", "bh-password"));
+        return customerRepository;
 	}
 
 	@Bean(scope = "singleton")
@@ -123,5 +131,10 @@ public class VideoRentalConfiguration {
 	@Bean(scope = "singleton")
 	public CustomerLoginInterceptor customerLoginInterceptor() {
 		return new CustomerLoginInterceptor();
+	}
+
+	@Bean(scope = "singleton")
+	public AdminRoleInterceptor adminRoleInterceptor() {
+		return new AdminRoleInterceptor();
 	}
 }

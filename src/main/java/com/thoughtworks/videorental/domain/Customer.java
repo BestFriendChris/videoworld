@@ -1,5 +1,7 @@
 package com.thoughtworks.videorental.domain;
 
+import com.thoughtworks.videorental.util.Feature;
+
 import java.util.Set;
 
 public class Customer {
@@ -8,12 +10,26 @@ public class Customer {
     private final String username;
     private final String password;
 
+    private final boolean isAdmin;
+
 	private int frequentRenterPoints = 0;
 
+    public static Customer createAdminUser(String displayName, String username, String password) {
+        if (!Feature.AdminAccount.isEnabled()) {
+            throw new RuntimeException("Admin account feature is not enabled");
+        }
+        return new Customer(displayName, username, password, true);
+    }
+
     public Customer(String displayName, String username, String password) {
+        this(displayName, username, password, false);
+    }
+
+    private Customer(String displayName, String username, String password, boolean isAdmin) {
         this.displayName = displayName;
         this.username = username;
         this.password = password;
+        this.isAdmin = isAdmin;
     }
 
     public String getDisplayName() {
@@ -22,6 +38,10 @@ public class Customer {
 
     public String getUsername() {
         return username;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
     }
 
     public String statement(final Set<Rental> newRentals) {
