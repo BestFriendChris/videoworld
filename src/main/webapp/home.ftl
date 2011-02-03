@@ -48,12 +48,24 @@
                             <th></th>
                             <th>Title</th>
                             <th>Price Code</th>
+                            <#if showDetailedMovies>
+                                <th>Director</th>
+                                <th>Actor</th>
+                                <th>Actress</th>
+                                <th>Category</th>
+                            </#if>
                         </tr>
                         <#list movies as movie>
                             <tr class="movie">
                                 <td class="choose"><input type="checkbox" name="movieNames" value="${movie.title}"/></td>
                                 <td>${movie.title}</td>
                                 <td>${movie.price.displayName}</td>
+                                <#if showDetailedMovies>
+                                    <td>${movie.director}</td>
+                                    <td>${movie.actor}</td>
+                                    <td>${movie.actress}</td>
+                                    <td>${movie.category}</td>
+                                </#if>
                             </tr>
                         </#list>
                     </table>

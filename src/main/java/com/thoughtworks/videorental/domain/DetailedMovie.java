@@ -15,16 +15,32 @@ public class DetailedMovie extends Movie {
         }
     }
 
+    public String getDirector() {
+        return director;
+    }
+
     public void setDirector(String director) {
         this.director = director;
+    }
+
+    public String getActor() {
+        return actor;
     }
 
     public void setActor(String actor) {
         this.actor = actor;
     }
 
+    public String getActress() {
+        return actress;
+    }
+
     public void setActress(String actress) {
         this.actress = actress;
+    }
+
+    public String getCategory() {
+        return category;
     }
 
     public void setCategory(String category) {
