@@ -1,7 +1,7 @@
 Tags:
 Preconditions:Server Is Running
 Login:
-#login as "James Madison"
+#login as "jmadison" with password "jm-password"
 
 Renting a Movie:
 #choose movie "Up In The Air"

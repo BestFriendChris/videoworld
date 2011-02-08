@@ -12,9 +12,10 @@ public class Login {
 		this.browser = browser;
 	}
 
-	public void loginAs(String userName) throws Exception {
+	public void loginAsWithPassword(String userName, String password) throws Exception {
 		browser.navigateTo("http://localhost:8081/login");
-		browser.select("customerName").choose(userName);
+		browser.textbox("username").setValue(userName);
+		browser.password("password").setValue(password);
 		browser.submit("login").click();
 	}
 
