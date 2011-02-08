@@ -1,4 +1,4 @@
-<project name="videorental" default="build">
+<project name="videoworld" default="build">
 
     <property environment="env"/>
     <property name="app.name" value="${ant.project.name}"/>
@@ -229,7 +229,7 @@
     <target name="twist-test" depends="util-jar, twist-fixtures-jar, war">
     	<!-- twist.runner doesn't provide a way to set working directory.
 	     This trick allows us to change the current working dir. -->
-        <ant antfile="${ant.file.videorental}" dir="${twist.dir}"
+        <ant antfile="${ant.file.videoworld}" dir="${twist.dir}"
 	        inheritAll="all" inheritRefs="all" target="-execute-scenarios">
             <property name="twist.dir" value="${twist.dir}"/>
             <property name="reports.dir" value="${reports.dir}"/>

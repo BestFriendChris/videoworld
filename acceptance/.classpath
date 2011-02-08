@@ -6,6 +6,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="com.thoughtworks.twist.language.JAVA"/>
 	<classpathentry kind="con" path="com.thoughtworks.twist.driver.SAHI/2.0.0"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/videorental"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/videoworld"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
